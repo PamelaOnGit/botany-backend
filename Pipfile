@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 flask = "*"
-flask-sqlalchemy = "*"
+flask-sqlalchemy = "2.0.1"
 psycopg2 = "*"
 flask-marshmallow = "*"
 marshmallow-sqlalchemy = "*"

@@ -1,5 +1,7 @@
 # instructions
 
+1. I created a ()[]) on QuickDBD to demonstrate the databases I will need for the shop and how they will relate to one another
+
 1. seeding is successful 
 2. table plus is not working - no db called pam
 3. built a serializer for the products
