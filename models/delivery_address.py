@@ -1,6 +1,6 @@
 from app import db 
 from models.base import BaseModel
-from models.order import OrderModel
+# from models.order import OrderModel
 
 class DeliveryAddressModel(db.Model, BaseModel): 
     __tablename__ = "delivery_address_table"

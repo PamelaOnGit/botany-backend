@@ -1,6 +1,9 @@
 from app import db 
 from models.base import BaseModel
 # !
+from models.delivery_address import DeliveryAddressModel
+from models.delivery_option import DeliveryOptionModel
+from models.order_status import OrderStatusModel
 
 
 

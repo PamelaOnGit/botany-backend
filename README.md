@@ -9,6 +9,7 @@
 5. however, encountered the horrible bug below
 6. resolved
 7. serializers and controller (inside my product controller) for my images (gallery)
+8. serializer and controller for creating a customer
 
 ### Endpoints
 

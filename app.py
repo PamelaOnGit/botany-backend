@@ -12,6 +12,10 @@ app.config['SQLALCHEMY_TRACK_MY_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
-from controllers import products
+from controllers import products, customers
 app.register_blueprint(products.router, url_prefix="/api")
+
+
+app.register_blueprint(customers.router, url_prefix="/api")
+
 
