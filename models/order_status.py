@@ -7,7 +7,7 @@ class OrderStatusModel(db.Model, BaseModel):
 
     name = db.Column(db.Text, nullable=False, unique=True)
 
-    order = db.relationship("OrderModel", back_populates="order_status")
+    order = db.relationship("OrderModel", back_populates="order_status", cascade='all, delete')
 
 
 # Relationships one(-order-status)-to-many(-orders)

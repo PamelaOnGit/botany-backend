@@ -1,5 +1,7 @@
 from app import db 
 from models.base import BaseModel
+# !
+
 
 
 class CustomerModel(db.Model, BaseModel): 
@@ -11,11 +13,9 @@ class CustomerModel(db.Model, BaseModel):
     email = db.Column(db.Text, nullable=False)
     phone = db.Column(db.Text, nullable=False)
 
+    order = db.relationship("OrderModel", back_populates="customers", cascade='all, delete')
 
-
-    order = db.relationship("OrderModel", back_populates="customer")
-    billing_address = db.relationship("BillingAddressModel", back_populates="customer")
-
+    billing_addresses = db.relationship("CustomerBillingAddressModel", back_populates="customers", cascade='all, delete')
 
 
 # Relationships 

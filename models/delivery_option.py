@@ -6,7 +6,7 @@ class DeliveryOptionModel(db.Model, BaseModel):
 
     name = db.Column(db.Text, nullable=False, unique=True)
 
-    order = db.relationship("OrderModel", back_populates="delivery_option")
+    order = db.relationship("OrderModel", back_populates="delivery_option", cascade='all, delete')
 
 
 # Relationships

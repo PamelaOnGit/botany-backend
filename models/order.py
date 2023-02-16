@@ -1,6 +1,9 @@
 from app import db 
 from models.base import BaseModel
-# from models.delivery_address import DeliveryAddressModel
+# !
+
+
+
 
 class OrderModel(db.Model, BaseModel): 
     __tablename__ = "order_table"
@@ -12,10 +15,13 @@ class OrderModel(db.Model, BaseModel):
     # possibly require a default order status here eg.0 
     order_status_id = db.Column(db.Integer, db.ForeignKey('order_status_table.id'), default=0, nullable=False)
 
-    customer = db.relationship("CustomerModel", back_populates="order")
-    delivery_address = db.relationship("DeliveryAddressModel", back_populates="order")
-    delivery_option = db.relationship("DeliveryOptionModel", back_populates="order")
-    order_status = db.relationship("OrderStatusModel", back_populates="order")
+    customers = db.relationship("CustomerModel", back_populates="order", cascade='all, delete')
+    delivery_address = db.relationship("DeliveryAddressModel", back_populates="order", cascade='all, delete')
+    delivery_option = db.relationship("DeliveryOptionModel", back_populates="order", cascade='all, delete')
+    order_status = db.relationship("OrderStatusModel", back_populates="order", cascade='all, delete')
+
+    # order_lines = db.relationship("OrderLineModel", back_populates='orders')
+
 
 
 

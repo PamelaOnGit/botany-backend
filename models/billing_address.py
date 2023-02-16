@@ -1,6 +1,7 @@
 from app import db 
 from models.base import BaseModel 
 
+
 class BillingAddressModel(db.Model, BaseModel):
     __tablename__ = "billing_address_table"
 
@@ -10,7 +11,8 @@ class BillingAddressModel(db.Model, BaseModel):
     region = db.Column(db.Text)
     postcode = db.Column(db.Text, nullable=False)
 
-    customer = db.relationship("CustomerModel", back_populates="billing_address")
+    customers = db.relationship("CustomerBillingAddressModel", back_populates="billing_addresses", cascade='all, delete')
+
 
     # Relationships
     # - customer - many-(billing addresses-)to-many(-customers)

@@ -9,7 +9,64 @@
 5. however, encountered the horrible bug below
 6. resolved
 7. serializers and controller (inside my product controller) for my images (gallery)
-8. product endpoints - GET all, CREATE one, DELETE one by ID, UPDATE one by ID, GET filtered by in_stock
+
+### Endpoints
+
+#### Home Page 
+
+1. Show product: GET one product by ID
+
+#### Kokedamas
+
+2. GET products filtered by category_id and in_stock; each product will be shown on its own 'product card' 
+
+=> onclick =>
+
+#### Product Page 
+3. display (GET) single product by id 
+4. display (GET) images filtered by product_id 
+5. display (GET) products filtered by type (base)
+
+=> add to basket => onclick => (local storage)
+
+#### Order Summary 
+
+LocalStorage: Displays contents of basket 
+
+7. GET product by id
+
+- display name, price and quantity
+
+
+=> proceed to checkout
+
+- form: input customer details, customer billing address, delivery address
+
+=> submit order => 
+
+create (POST) new customer
+create (POST) new billing address
+create (POST) new delivery address
+create (POST) new order
+create (POST) new order_line
+create (POST) new order_line 
+
+=> confirmation page 
+
+
+
+
+
+10. 
+
+
+
+
+
+
+
+product endpoints - GET all, CREATE one, UPDATE one by ID, GET filtered by in_stock and category_id
+
 9. image endpoints - GET images filtered by productID (FK), CREATE one image by ProductID (FK), DELETE one image by ProductID (FK)
 ## Bugs 
 

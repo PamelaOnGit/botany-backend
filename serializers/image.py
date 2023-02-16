@@ -6,3 +6,4 @@ class ImageSchema(ma.SQLAlchemyAutoSchema):
     class Meta: 
         model = ImageModel
         load_instance = True
+        include_fk = True

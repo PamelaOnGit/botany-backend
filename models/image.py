@@ -9,3 +9,4 @@ class ImageModel(db.Model, BaseModel):
 
     product_id = db.Column(db.Integer, db.ForeignKey('product_table.id'), nullable=False)
 
+    products = db.relationship('ProductModel', back_populates="images")

@@ -11,7 +11,7 @@ class DeliveryAddressModel(db.Model, BaseModel):
     region = db.Column(db.Text)
     postcode = db.Column(db.Text, nullable=False)
 
-    order = db.relationship("OrderModel", back_populates="delivery_address")
+    order = db.relationship("OrderModel", back_populates="delivery_address", cascade='all, delete')
 
     # orders = db.relationship('OrderModel', backref='order_table', cascade='all, delete')
     # Relationships

@@ -13,3 +13,4 @@ class ProductSchema(ma.SQLAlchemyAutoSchema):
 
         model = ProductModel       
         load_instance = True
+        include_fk = True

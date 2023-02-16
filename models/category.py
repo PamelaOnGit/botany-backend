@@ -7,8 +7,7 @@ class CategoryModel(db.Model, BaseModel):
     name = db.Column(db.Text, nullable=False, unique=True)
 
 
-    products = db.relationship('ProductModel', backref='product_table', cascade='all, delete')
-
+    products = db.relationship('ProductModel', back_populates="categories", cascade="all, delete")
   # Relationships 
   # product_table - one-(category-)to-many(-product)
 # a product must have exactly one category
