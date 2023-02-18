@@ -4,6 +4,7 @@ from models.base import BaseModel
 from models.delivery_address import DeliveryAddressModel
 from models.delivery_option import DeliveryOptionModel
 from models.order_status import OrderStatusModel
+from models.customer import CustomerModel
 
 
 
@@ -18,12 +19,12 @@ class OrderModel(db.Model, BaseModel):
     # possibly require a default order status here eg.0 
     order_status_id = db.Column(db.Integer, db.ForeignKey('order_status_table.id'), default=0, nullable=False)
 
-    customers = db.relationship("CustomerModel", back_populates="order", cascade='all, delete')
+    customer = db.relationship("CustomerModel", back_populates="order", cascade='all, delete')
     delivery_address = db.relationship("DeliveryAddressModel", back_populates="order", cascade='all, delete')
     delivery_option = db.relationship("DeliveryOptionModel", back_populates="order", cascade='all, delete')
     order_status = db.relationship("OrderStatusModel", back_populates="order", cascade='all, delete')
 
-    # order_lines = db.relationship("OrderLineModel", back_populates='orders')
+    order_lines = db.relationship("OrderLineModel", back_populates='orders')
 
 
 

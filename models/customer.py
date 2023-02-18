@@ -1,7 +1,6 @@
 from app import db 
 from models.base import BaseModel
-from models.order import OrderModel
-# !
+
 from models.customer_billing_address import CustomerBillingAddressModel
 
 
@@ -15,7 +14,7 @@ class CustomerModel(db.Model, BaseModel):
     email = db.Column(db.Text, nullable=False)
     phone = db.Column(db.Text, nullable=False)
 
-    order = db.relationship("OrderModel", back_populates="customers")
+    order = db.relationship("OrderModel", back_populates="customer")
     
     customer_billing_addresses = db.relationship("CustomerBillingAddressModel", back_populates="customers")
 

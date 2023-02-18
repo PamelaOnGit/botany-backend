@@ -15,8 +15,10 @@
 10. serializer and controller for creating a delivery address ✅
 11. endpoints for creating a customer, a delivery address and a new order ✅
 12. ✅ create endpoint for adding a new orderline to an order
-13. sort out nested fields
-14. 
+13. ✅ sort out nested fields
+14. ✅ check have all endpoints for admin
+14. add user and secure route
+
 
 
 
@@ -64,15 +66,13 @@ create (POST) new order_line
 => confirmation page 
 
 
+### Admin endpoints
 
-
-
-10. 
-
-
-
-
-
+- POST new product
+- POST new image to the gallery
+- GET all orders 
+- (view) GET an order by id with nested customer, delivery address, order_lines 
+- (update) PATCH an order to update the order status (or some other item on the order)
 
 
 product endpoints - GET all, CREATE one, UPDATE one by ID, GET filtered by in_stock and category_id

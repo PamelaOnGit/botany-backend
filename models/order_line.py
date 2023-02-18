@@ -1,6 +1,6 @@
 from app import db 
 from models.base import BaseModel 
-# !
+from models.order import OrderModel
 
 
 class OrderLineModel(db.Model, BaseModel): 
@@ -14,7 +14,7 @@ class OrderLineModel(db.Model, BaseModel):
     option = db.Column(db.Text)
 
     products = db.relationship('ProductModel', back_populates='order_lines')
-    # orders = db.relationship('OrderModel', backref='order_lines')
+    orders = db.relationship('OrderModel', back_populates='order_lines')
 
     # Relationships 
 

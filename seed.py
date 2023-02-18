@@ -11,6 +11,7 @@ from models.delivery_option import DeliveryOptionModel
 from models.order import OrderModel
 from models.order_line import OrderLineModel
 from models.customer_billing_address import CustomerBillingAddressModel
+from models.admin import AdminModel
 
 
 
@@ -49,8 +50,44 @@ with app.app_context():
         db.session.add(test_order_status)
         db.session.commit()
 
+        order_status_2 = OrderStatusModel(name="rejected")
+        db.session.add(order_status_2)
+        db.session.commit()
+
+        order_status_3 = OrderStatusModel(name="accepted")
+        db.session.add(order_status_3)
+        db.session.commit()
+
+        order_status_4 = OrderStatusModel(name="paid")
+        db.session.add(order_status_4)
+        db.session.commit()
+
+        order_status_5 = OrderStatusModel(name="cancelled")
+        db.session.add(order_status_5)
+        db.session.commit()
+
+        order_status_6 = OrderStatusModel(name="shipped")
+        db.session.add(order_status_6)
+        db.session.commit()
+
+        order_status_7 = OrderStatusModel(name="delivered")
+        db.session.add(order_status_7)
+        db.session.commit()
+
+        order_status_8 = OrderStatusModel(name="refunded")
+        db.session.add(order_status_8)
+        db.session.commit()
+
         test_category = CategoryModel(name="kokedama")
         db.session.add(test_category)
+        db.session.commit()
+
+        test_category_base = CategoryModel(name="base")
+        db.session.add(test_category_base)
+        db.session.commit()
+
+        test_category_kit = CategoryModel(name="kit")
+        db.session.add(test_category_kit)
         db.session.commit()
 
         test_order = OrderModel(customer_id=test_customer.id, delivery_address_id=test_delivery_address.id, delivery_option_id=test_delivery_option.id, total_amount=10.00, order_status_id=test_order_status.id)
@@ -62,12 +99,13 @@ with app.app_context():
         db.session.commit()
 
         test_order_line = OrderLineModel(order_id=test_order.id, product_id=test_product.id, quantity=1, gift=True, message="some optional string", option="some string describing the base")
-        db.session.add(test_order_line)
-        db.session.commit()
-        print(test_product.id)
+        test_order_line.save()
 
         test_image = ImageModel(image_url="some url as Text", product_id=test_product.id)
         test_image.save()
+
+        test_admin = AdminModel(username="Pam", password="password")
+        test_admin.save()
 
         print("Database seeded!")
     except Exception as e: 
