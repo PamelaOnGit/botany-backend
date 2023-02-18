@@ -1,7 +1,11 @@
+from datetime import datetime, timedelta
 
 from app import db, bcrypt
 from models.base import BaseModel
 from sqlalchemy.ext.hybrid import hybrid_property
+import jwt
+
+from config.environment import secret
 
 class AdminModel(db.Model, BaseModel):
     __tablename__ = "admin_table"
@@ -31,3 +35,18 @@ class AdminModel(db.Model, BaseModel):
 
     def validate_password(self, password_plaintext):
         return bcrypt.check_password_hash(self.password_hash, password_plaintext)
+
+    def generate_token(self):
+        payload = { 
+            "exp": datetime.utcnow() + timedelta(days=1), 
+            "iat": datetime.utcnow(),
+            "sub": self.id  #! this is the id of the user, which we can use later
+        }
+
+        token = jwt.encode(
+          payload,
+          secret, # ! Secret string only I know
+          algorithm="HS256"
+        )
+
+        return token

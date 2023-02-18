@@ -12,6 +12,7 @@ marshmallow-sqlalchemy = "*"
 sqlalchemy = "==2.0.1"
 flask-bcrypt = "*"
 python-dotenv = "*"
+pyjwt = "*"
 
 [dev-packages]
 
