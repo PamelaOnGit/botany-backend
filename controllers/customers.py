@@ -19,7 +19,7 @@ def get_customers():
     return customer_schema.jsonify(customers, many=True)
 
 # add a customer
-@router.route("/customers", methods=["POST", "PATCH"])
+@router.route("/customer", methods=["POST", "PATCH"])
 def add_customer(): 
     customer_dictionary = request.json
     
@@ -33,8 +33,8 @@ def add_customer():
 #         # TODO only add customers if customer email is not unique - 
 #         # TODO otherwise, update customer details with PATCH
 
-# TODO find a customer by id
-@router.route("/customers/find_id/<int:customer_id>", methods=["GET"])
+#  find a customer by id
+@router.route("/customer/find_id/<int:customer_id>", methods=["GET"])
 def find_customer_by_id(customer_id):
     existing_customer = CustomerModel.query.get(customer_id)
     if not existing_customer: 
@@ -45,9 +45,9 @@ def find_customer_by_id(customer_id):
         return {"errors": e.messages, "message": "Something went wrong"}
 
 
-# TODO find a customer by email
+# find a customer by email
 # !
-@router.route("/customers/find_email", methods=["GET"])
+@router.route("/customer/find", methods=["GET"])
 def get_customer_by_name(): 
     customer_email = request.json
     existing_customer = CustomerModel.query.filter(
@@ -60,5 +60,11 @@ def get_customer_by_name():
     except Exception as e: 
         return {"errors": e.messages, "message": "Something went wrong"}
 
-
+# TODO add a customer billing address 
+# @router.route("/customers/billing_address", methods=["POST"])
+# def add_billing_address(): 
+#     billing_address_dictionary = request.json
+#     return customer_billing_address
   
+
+

@@ -8,8 +8,13 @@
 4. created a table for additional images - gallery - with a one-to-many relationship between products-and-images
 5. however, encountered the horrible bug below
 6. resolved
-7. serializers and controller (inside my product controller) for my images (gallery)
-8. serializer and controller for creating a customer
+7. serializers and controller (inside my product controller) for my images (gallery) ✅
+8. serializer and controller for creating a customer ✅
+9. 🔒 TODO serializer and controller for creating a billing address
+// not working yet - > start here 
+10. serializer and controller for creating a delivery address ✅
+11. endpoints for creating a customer, a delivery address and a new order ✅
+
 
 ### Endpoints
 

@@ -17,7 +17,7 @@ class CustomerModel(db.Model, BaseModel):
 
     order = db.relationship("OrderModel", back_populates="customers")
     
-    billing_addresses = db.relationship("CustomerBillingAddressModel", back_populates="customers")
+    customer_billing_addresses = db.relationship("CustomerBillingAddressModel", back_populates="customers")
 
 
 # Relationships 

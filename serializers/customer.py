@@ -5,10 +5,10 @@ from marshmallow import fields
 
 class CustomerSchema(ma.SQLAlchemyAutoSchema): 
     
-    orders = fields.Nested('OrderSchema', many=True)
-
+    billing_address = fields.Nested('BillingAddressSchema', many=True)
+  
     class Meta:
         model = CustomerModel
         load_instance = True
-        include_fk = True
+        # include_fk = True
 
