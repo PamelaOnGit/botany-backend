@@ -9,8 +9,13 @@ from serializers.delivery_address import DeliveryAddressSchema
 from models.order import OrderModel
 from serializers.order import OrderSchema
 
+from models.order_line import OrderLineModel
+from serializers.order_line import OrderLineSchema
+
+
 delivery_address_schema = DeliveryAddressSchema()
 order_schema = OrderSchema()
+order_line_schema = OrderLineSchema()
 
 router = Blueprint('orders', __name__)
 
@@ -40,6 +45,7 @@ def create_order():
     # add the total_amount from the form
     new_order = order_schema.load(order_dictionary)
     new_order.save()
+    print(new_order.id)
     return order_schema.jsonify(new_order), HTTPStatus.CREATED
 
 
@@ -52,30 +58,22 @@ def get_delivery_addresses():
     return delivery_address_schema.jsonify(addresses, many=True)
 
 
-@router.route("orders/delivery_address", methods=["POST"])
+@router.route("order/delivery_address", methods=["POST"])
 def add_delivery_address():
     delivery_address_dictionary = request.json
     print(delivery_address_dictionary["street_address"])
-
-    # # check if the delivery address already exists in the database
-    # # if not, create new entry
-    # existing_delivery_address = DeliveryAddressModel.query.filter(
-    #   DeliveryAddressModel.street_address.like(delivery_address_dictionary["street_address"])
-    # )
-    # if not existing_delivery_address:
-    #     new_delivery_address = delivery_address_schema.load(delivery_address_dictionary)
-    #     new_delivery_address.save()
-    # # ! I will need the new delivery address id for the order form
-    #     print (new_delivery_address.id)
-    #     return delivery_address_schema.jsonify(new_delivery_address), HTTPStatus.CREATED
-    # return {"message": "this delivery address already exists"}
-
-    new_delivery_address = delivery_address_schema.load(
-    delivery_address_dictionary)
+    new_delivery_address = delivery_address_schema.load(delivery_address_dictionary)
     new_delivery_address.save()
     # ! I will need the new delivery address id for the order form
     print (new_delivery_address.id)
     return delivery_address_schema.jsonify(new_delivery_address), HTTPStatus.CREATED
 
+# creating a new orderline for an order
 
-
+@router.route("/order/orderline", methods=["POST"])
+def add_order_line():   
+    order_line_dictionary = request.json
+    new_order_line = order_line_schema.load(order_line_dictionary)
+    new_order_line.save()
+    # add the order_id to the new order_line
+    return order_line_schema.jsonify(new_order_line)

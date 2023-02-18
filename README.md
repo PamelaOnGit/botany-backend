@@ -14,6 +14,10 @@
 // not working yet - > start here 
 10. serializer and controller for creating a delivery address ✅
 11. endpoints for creating a customer, a delivery address and a new order ✅
+12. ✅ create endpoint for adding a new orderline to an order
+13. sort out nested fields
+14. 
+
 
 
 ### Endpoints
