@@ -16,6 +16,8 @@ from serializers.order_line import OrderLineSchema
 from models.order_status import OrderStatusModel
 from serializers.order_status import OrderStatusSchema
 
+from middleware.secure_route import secure_route
+
 
 delivery_address_schema = DeliveryAddressSchema()
 order_schema = OrderSchema()
@@ -31,6 +33,7 @@ router = Blueprint('orders', __name__)
 
 # get all the orders
 @router.route("/orders/all", methods=["GET"])
+@secure_route
 def get_orders():
     orders = OrderModel.query.all()
     print(orders)
@@ -54,6 +57,7 @@ def create_order():
 
 # get a single order by id
 @router.route("/order/<int:order_id>", methods=["GET"])
+@secure_route
 def get_single_order(order_id):
     existing_order = OrderModel.query.get(order_id)
     if not existing_order: 
@@ -68,10 +72,10 @@ def get_single_order(order_id):
 # create a new delivery address
 # TODO check whether delivery address exists before creating a new delivery address
 
-@router.route("/orders/delivery_addresses/all", methods=["GET"])
-def get_delivery_addresses():
-    addresses = DeliveryAddressModel.query.all()
-    return delivery_address_schema.jsonify(addresses, many=True)
+# @router.route("/orders/delivery_addresses/all", methods=["GET"])
+# def get_delivery_addresses():
+#     addresses = DeliveryAddressModel.query.all()
+#     return delivery_address_schema.jsonify(addresses, many=True)
 
 
 @router.route("order/delivery_address", methods=["POST"])
@@ -97,6 +101,7 @@ def add_order_line():
 
 # update an order by order_id 
 @router.route("/order/<int:order_id>", methods=["PUT", "PATCH"])
+@secure_route
 def update_order(order_id): 
     order_dictionary = request.json
     existing_order = OrderModel.query.get(order_id)

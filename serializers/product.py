@@ -4,7 +4,7 @@ from marshmallow import fields
 
 class ProductSchema(ma.SQLAlchemyAutoSchema):
 
-    images = fields.Nested('ImageSchema', many=True)
+    gallery_image = fields.Nested('ImageSchema', many=True)
     
     class Meta: 
 

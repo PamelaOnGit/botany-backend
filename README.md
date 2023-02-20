@@ -17,6 +17,7 @@
 12. ✅ create endpoint for adding a new orderline to an order
 13. ✅ sort out nested fields
 14. ✅ check have all endpoints for admin
+15. 🔒 fix the adding images / image relationships
 14. add user and secure route oauth - 01:36 mins
 15. 
 
@@ -97,4 +98,8 @@ I remembered that I had been prompted to install marshmallow-sqlalchemy during t
 I saw that sqlalchemy had updated to a new version. I changed it back to the previous version and found that my code now worked as intended.  
 
 I will reconsider whether I want automatic upgrades for my dependencies.  From now on, I will consider picking fixed versions.  
+
+
+___ 
+I found that when I tried to post an image, I got an error, 'product_id' unknown field.  It seems as if the image is being created before the product, and then the product_id is not there to be added to the new gallery_image.  
 

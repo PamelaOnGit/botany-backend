@@ -101,6 +101,9 @@ with app.app_context():
 
         test_image = ImageModel(image_url="some url as Text", product_id=test_product.id)
         test_image.save()
+        
+        test_image2 = ImageModel(image_url="whatever it should be", product_id=test_product.id)
+        test_image2.save()
 
         test_admin = AdminModel(username="Pam", password="password")
         test_admin.save()

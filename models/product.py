@@ -17,7 +17,7 @@ class ProductModel(db.Model, BaseModel):
     short_description = db.Column(db.Text, nullable=False)
     in_stock = db.Column(db.Integer, nullable=False)
 
-    images = db.relationship('ImageModel', back_populates="products", cascade='all, delete')
+    gallery_image = db.relationship('ImageModel', back_populates="product")
     order_lines = db.relationship('OrderLineModel', back_populates="products")
     categories = db.relationship('CategoryModel', back_populates="products", cascade='all, delete')
 

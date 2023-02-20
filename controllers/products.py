@@ -2,11 +2,15 @@ from http import HTTPStatus
 from flask import Blueprint, request
 from marshmallow.exceptions import ValidationError
 
+
+
 from models.product import ProductModel
 from serializers.product import ProductSchema
 
 from models.image import ImageModel
 from serializers.image import ImageSchema
+
+from middleware.secure_route import secure_route
 
 product_schema = ProductSchema()
 image_schema = ImageSchema()
@@ -18,6 +22,7 @@ router = Blueprint('kokedamas', __name__)
 
 # get all the products
 @router.route("/kokedamas/all", methods=["GET"])
+@secure_route
 def get_products():
     products = ProductModel.query.all()
     return product_schema.jsonify(products, many=True)
@@ -25,6 +30,7 @@ def get_products():
 
 # add a product
 @router.route("/kokedamas", methods=["POST"])
+@secure_route
 def add_product():
     product_dictionary = request.json
     try:
@@ -37,6 +43,7 @@ def add_product():
 
 
 @router.route("/kokedamas/<int:product_id>", methods=["PUT", "PATCH"])
+@secure_route
 def update_product(product_id):
     product_dictionary = request.json
     existing_product = ProductModel.query.get(product_id)
@@ -90,30 +97,42 @@ def get_stock():
 # ----------------------
 
 # get all the images
+@secure_route
 @router.route("/kokedamas/gallery/all", methods=["GET"])
 def get_images():
     images = ImageModel.query.all()
     return image_schema.jsonify(images, many=True)
 
 # post an image
-@router.route("/kokedamas/<int:product_id>/gallery", methods=["POST"])
-def create_image(product_id):
-    image_dictionary = request.json
-    image_dictionary["product_id"] = product_id
-    existing_product = ProductModel.query.get(product_id)
-    if not existing_product:
-        return {"message": "Product not found"}, HTTPStatus.NOT_FOUND
-    try:
-        image = image_schema.load(image_dictionary)
-        image.product_id = product_id
-        image.save()
-    except ValidationError as e:
-        return {"errors": e.messages, "message": "Something went wrong"}
+# @router.route("/kokedamas/<int:product_id>/gallery", methods=["POST"])
+# def create_image(product_id):
+#     image_dictionary = request.json
+#     image_dictionary["product_id"] = product_id
+#     existing_product = ProductModel.query.get(product_id)
+#     if not existing_product:
+#         return {"message": "Product not found"}, HTTPStatus.NOT_FOUND
+#     try:
+#         image = image_schema.load(image_dictionary)
+#         image.product_id = product_id
+#         image.save()
+#     except ValidationError as e:
+#         return {"errors": e.messages, "message": "Something went wrong"}
 
-    return image_schema.jsonify(image), HTTPStatus.CREATED
+#     return image_schema.jsonify(image), HTTPStatus.CREATED
+
+# post an image 
+@router.route("/kokedamas/gallery/add", methods=["POST"])
+@secure_route
+def add_gallery_image(): 
+    gallery_image_dictionary = request.json
+    new_gallery_image = image_schema.load(gallery_image_dictionary)
+    new_gallery_image.save()
+    print(new_gallery_image)
+    return image_schema.jsonify(new_gallery_image), HTTPStatus.CREATED
 
 # delete an image from the images_table
 @router.route("/kokedamas/gallery/<int:image_id>", methods=["DELETE"])
+@secure_route
 def delete_image(image_id):
     existing_image = ImageModel.query.get(image_id)
     if not existing_image:
