@@ -21,4 +21,4 @@ def login():
         return { "message": "username or password was incorrect"}        
     # make a token and send it back
     token = admin.generate_token()
-    return { "token" : token, "message":"Welcome back!"}
+    return { "token" : token, "message":"Welcome back " + admin_dictionary["username"] + "!" }

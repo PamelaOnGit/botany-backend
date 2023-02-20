@@ -10,14 +10,15 @@
 6. resolved
 7. serializers and controller (inside my product controller) for my images (gallery) ✅
 8. serializer and controller for creating a customer ✅
-9. 🔒 TODO serializer and controller for creating a billing address
-// not working yet - > start here 
+9. 🔒 TODO serializer and controller for creating a billing addres  // not working yet - > start here 
+9. 🔒 TODO serializer and controller for adding an image // not working 
 10. serializer and controller for creating a delivery address ✅
 11. endpoints for creating a customer, a delivery address and a new order ✅
 12. ✅ create endpoint for adding a new orderline to an order
 13. ✅ sort out nested fields
 14. ✅ check have all endpoints for admin
-14. add user and secure route
+14. add user and secure route oauth - 01:36 mins
+15. 
 
 
 
@@ -78,6 +79,7 @@ create (POST) new order_line
 product endpoints - GET all, CREATE one, UPDATE one by ID, GET filtered by in_stock and category_id
 
 9. image endpoints - GET images filtered by productID (FK), CREATE one image by ProductID (FK), DELETE one image by ProductID (FK)
+
 ## Bugs 
 
 When I was programming the image model and seeding in this project, I had an error I didn't recognise: 

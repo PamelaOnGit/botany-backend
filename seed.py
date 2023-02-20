@@ -13,8 +13,6 @@ from models.order_line import OrderLineModel
 from models.customer_billing_address import CustomerBillingAddressModel
 from models.admin import AdminModel
 
-
-
 with app.app_context(): 
     
     try: 
