@@ -19,7 +19,8 @@
 14. ✅ check have all endpoints for admin
 15. 🔒 fix the adding images / image relationships
 14. add user and secure route oauth - 01:36 mins
-15. 
+15. Working on the Login frontend - start with the Login component (w16) and watch relevant video
+16. working on creating a 
 
 
 

@@ -89,6 +89,13 @@ def add_delivery_address():
     print (new_delivery_address.id)
     return delivery_address_schema.jsonify(new_delivery_address), HTTPStatus.CREATED
 
+
+# get all the delivery addresses
+@router.route("orders/delivery_addresses/all", methods=["GET"])
+def get_all_delivery_addresses(): 
+    delivery_addresses = DeliveryAddressModel.query.all()
+    return delivery_address_schema.jsonify(delivery_addresses, many=True)
+
 # creating a new orderline for an order
 
 @router.route("/order/orderline", methods=["POST"])
