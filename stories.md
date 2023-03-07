@@ -11,6 +11,7 @@
 
 3. As an admin, I want to login and delete a product from the database so that I can remove products that I no longer want in the database
 // DELETE a product by ID
+// ! During the build, I realised that it would be both difficult and unnecessary to completely remove products from the database, because of the relationship between orders and products. I decided it would be better to leave products in the database but set the in_stock property to 0, so that they will not be displayed to the customer. As this is a small business, with a small number of products, this won't cause a problem.  
 
 4. As an admin, I want to login and update a product in the database so that I can change the image, name, price and/or description of a product in the database, so that I can change the product values in the database
 // UPDATE product by ID

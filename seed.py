@@ -103,14 +103,26 @@ with app.app_context():
         db.session.add(test_order)
         db.session.commit()
 
-        test_product = ProductModel(name="sunrise", category_id=test_category.id, alt_name="kokedama - Japanese", price=30,
-                                    image="https://www.shutterstock.com/image-photo/ball-shaped-tropical-houseplant-aphelandra-260nw-1819255088.jpg", long_description="some text long", short_description="some text short", in_stock=5)
+        test_product = ProductModel(name="Moth Orchid", category_id=test_category.id, alt_name="ga ran", 
+                                    price=35,
+                                    image="https://res.cloudinary.com/dylcc2ao7/image/upload/v1677578650/orchid1_zjtopt.jpg", 
+                                    long_description="Leaves like swords arise, \nFerns, ancient green soldiers stand,\nForest's noble guard.", 
+                                    short_description="Phalaenopsis, or moth orchids are the most popular indoor orchids, with exotic, long lasting flowers.", in_stock=5)
         db.session.add(test_product)
         db.session.commit()
 
-        test_product1 = ProductModel(name="canopy", category_id=test_category.id, alt_name="kokedama - Japanese", price=30,
-                                     image="https://c8.alamy.com/comp/2G3HRRN/kokedama-of-a-succulent-plant-called-crassula-ovata-gollum-or-hobbit-on-a-wooden-table-2G3HRRN.jpg", long_description="some text long", short_description="some text short", in_stock=5)
+        test_product1 = ProductModel(name="Sword Fern", category_id=test_category.id, alt_name="ken shida", price=25,
+                                     image="https://res.cloudinary.com/dylcc2ao7/image/upload/v1677581396/fern4_1_ak2k5q.jpg", 
+                                     long_description="some text long", 
+                                     short_description="The sword fern is a lush evergreen plant with bright green, sword-shaped fronds.", in_stock=5)
         db.session.add(test_product1)
+        db.session.commit()
+
+        test_product2 = ProductModel(name="Ivy", category_id=test_category.id, alt_name="wandā", price=25,
+                                     image="https://res.cloudinary.com/dylcc2ao7/image/upload/v1677578968/ivy2_cwuco9.jpg", 
+                                     long_description="some text long", 
+                                     short_description="Hedera helix, the common ivy or English ivy, is a versatile ivy with trailing stems that are laced with rich green, slightly ruffled leaves.", in_stock=5)
+        db.session.add(test_product2)
         db.session.commit()
 
         test_order_line = OrderLineModel(order_id=test_order.id, product_id=test_product.id, quantity=1,
